@@ -109,8 +109,6 @@ A Postman collection is provided for testing the API endpoints.
 
 ## Example Usage
 
-## Example Usage
-
 **Get Current Exchange Rates (Default: EUR):**
 GET /api/Currency/ExchangeRates
 
