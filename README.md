@@ -109,6 +109,11 @@ A Postman collection is provided for testing the API endpoints.
 
 ## Example Usage
 
+## Example Usage
+
+**Get Current Exchange Rates (Default: EUR):**
+GET /api/Currency/ExchangeRates
+
 **Get Current Exchange Rates:**
 GET /api/Currency/ExchangeRates?currencyCode=USD
 
@@ -128,4 +133,5 @@ GET /api/Currency/HistoricalRates?startDate=2020-01-14&endDate=2020-02-06&curren
 4. Use Postman to test the endpoints using the provided collection.
 
 This documentation provides a comprehensive overview of the Currency API, including endpoint details, caching, unit tests, and Postman collection for testing.
+
 
