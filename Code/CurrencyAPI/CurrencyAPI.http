@@ -1,0 +1,6 @@
+@CurrencyAPI_HostAddress = http://localhost:5130
+
+GET {{CurrencyAPI_HostAddress}}/currency/
+Accept: application/json
+
+###

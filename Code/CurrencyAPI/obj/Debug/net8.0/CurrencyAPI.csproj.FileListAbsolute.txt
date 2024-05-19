@@ -1,0 +1,66 @@
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\appsettings.json
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\CurrencyAPI.exe
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\CurrencyAPI.deps.json
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\CurrencyAPI.runtimeconfig.json
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\CurrencyAPI.dll
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\CurrencyAPI.pdb
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.csproj.AssemblyReference.cache
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.AssemblyInfoInputs.cache
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.AssemblyInfo.cs
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.csproj.CoreCompileInputs.cache
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\staticwebassets\msbuild.CurrencyAPI.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\staticwebassets\msbuild.build.CurrencyAPI.props
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.CurrencyAPI.props
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.CurrencyAPI.props
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\scopedcss\bundle\CurrencyAPI.styles.css
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\Currency.BCB1C523.Up2Date
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.dll
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\refint\CurrencyAPI.dll
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.pdb
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.genruntimeconfig.cache
+C:\Users\arsal\OneDrive\Desktop\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\ref\CurrencyAPI.dll
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\appsettings.json
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\CurrencyAPI.exe
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\CurrencyAPI.deps.json
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\CurrencyAPI.runtimeconfig.json
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\CurrencyAPI.dll
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\CurrencyAPI.pdb
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.csproj.AssemblyReference.cache
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.AssemblyInfoInputs.cache
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.AssemblyInfo.cs
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.csproj.CoreCompileInputs.cache
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\staticwebassets\msbuild.CurrencyAPI.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\staticwebassets\msbuild.build.CurrencyAPI.props
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.CurrencyAPI.props
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.CurrencyAPI.props
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\scopedcss\bundle\CurrencyAPI.styles.css
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.csproj.CopyComplete
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.dll
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\refint\CurrencyAPI.dll
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.pdb
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\CurrencyAPI.genruntimeconfig.cache
+C:\Users\osama.tariq\Downloads\CurrencyAPI (3)\CurrencyAPI\CurrencyAPI\obj\Debug\net8.0\ref\CurrencyAPI.dll

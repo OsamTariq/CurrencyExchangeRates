@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "fa1cd73a-a0b2-4554-9995-c3a761d64173",
+		"name": "Currency Project - Bamboo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2372711"
+	},
+	"item": [
+		{
+			"name": "Currency Exchange Rate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/Currency/ExchangeRates?currencyCode=USD",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"Currency",
+						"ExchangeRates"
+					],
+					"query": [
+						{
+							"key": "currencyCode",
+							"value": "USD"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Currency Convert",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/Currency/currencyconvert?amount=123&to=JPY&from=AUD",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"Currency",
+						"currencyconvert"
+					],
+					"query": [
+						{
+							"key": "amount",
+							"value": "123"
+						},
+						{
+							"key": "to",
+							"value": "THB",
+							"disabled": true
+						},
+						{
+							"key": "to",
+							"value": "JPY"
+						},
+						{
+							"key": "from",
+							"value": "YPJ",
+							"disabled": true
+						},
+						{
+							"key": "from",
+							"value": "AUD"
+						},
+						{
+							"key": "to",
+							"value": "AUD",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Currency Historical Rates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/Currency/HistoricalRates?startDate=2020-01-14&endDate=2020-02-06&currencyCode=AUD&page=1&pageSize=5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"Currency",
+						"HistoricalRates"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2020-01-14"
+						},
+						{
+							"key": "endDate",
+							"value": "2020-02-06"
+						},
+						{
+							"key": "currencyCode",
+							"value": "AUD"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "urlTest",
+			"value": "https://api.frankfurter.app",
+			"type": "string"
+		},
+		{
+			"key": "url",
+			"value": "https://localhost:7034",
+			"type": "string"
+		}
+	]
+}
