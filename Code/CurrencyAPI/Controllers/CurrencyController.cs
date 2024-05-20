@@ -1,6 +1,9 @@
 ﻿using CurrencyAPI.Models;
 using CurrencyAPI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Net;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CurrencyAPI.Controllers
 {
@@ -10,6 +13,7 @@ namespace CurrencyAPI.Controllers
     {
         private readonly ICurrencyService _currencyService;
         private static readonly string[] ExcludedCurrencies = { "TRY", "PLN", "THB", "MXN" };
+        ErrorResponse error;
 
         public CurrencyController(ICurrencyService currencyService)
         {
@@ -22,15 +26,26 @@ namespace CurrencyAPI.Controllers
             try
             {
                 var data = await _currencyService.CurrencyExchangeRates(currencyCode);
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                ErrorResponse error = new ErrorResponse()
+
+                if (data.StatusCode == 200)
                 {
-                    ErrorMessage = ex.Message,
+                    return Ok(data.Data);
+                }
+
+                error = new ErrorResponse
+                {
+                    ErrorMessage = data?.Data?.ToString()
                 };
-                return StatusCode(500, error);
+
+                return StatusCode((int)data.StatusCode, error);
+            }
+            catch (Exception)
+            {
+                error = new ErrorResponse
+                {
+                    ErrorMessage = "Internal Server Error"
+                };
+                return StatusCode((int)HttpStatusCode.InternalServerError, error);
             }
         }
 
@@ -49,15 +64,26 @@ namespace CurrencyAPI.Controllers
             try
             {
                 var data = await _currencyService.CurrencyConvert(amount, from, to);
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                ErrorResponse error = new ErrorResponse()
+
+                if (data.StatusCode == 200)
                 {
-                    ErrorMessage = ex.Message,
+                    return Ok(data.Data);
+                }
+
+                error = new ErrorResponse
+                {
+                    ErrorMessage = data?.Data?.ToString()
                 };
-                return StatusCode(500, error);
+
+                return StatusCode((int)data.StatusCode, error);
+            }
+            catch (Exception)
+            {
+                error = new ErrorResponse
+                {
+                    ErrorMessage = "Internal Server Error"
+                };
+                return StatusCode((int)HttpStatusCode.InternalServerError, error);
             }
         }
 
@@ -66,28 +92,41 @@ namespace CurrencyAPI.Controllers
         {
             try
             {
-                var rates = await _currencyService.CurrencyHistoricalRates(startDate, endDate, currencyCode);
-                var pagedRates = rates?.Rates?.Skip((page - 1) * pageSize).Take(pageSize).ToDictionary(pair => pair.Key, pair => pair.Value);
+                var data = await _currencyService.CurrencyHistoricalRates(startDate, endDate, currencyCode);
 
-                var data = new PaginatedResponse<Dictionary<string, decimal>>
+                if (data.StatusCode == 200)
                 {
-                    Base = rates?.Base,
-                    Start_Date = rates?.Start_Date,
-                    End_Date = rates?.End_Date,
-                    Page = page,
-                    PageSize = pageSize,
-                    TotalCount = rates != null ? rates.Rates.Count : 0,
-                    Rates = pagedRates
+                    var rates = JsonConvert.DeserializeObject<HistoricalRates>(data.Data.ToString());
+
+                    var pagedRates = rates?.Rates?.Skip((page - 1) * pageSize).Take(pageSize).ToDictionary(pair => pair.Key, pair => pair.Value);
+
+                    var response = new PaginatedResponse<Dictionary<string, decimal>>
+                    {
+                        Base = rates?.Base,
+                        Start_Date = rates?.Start_Date,
+                        End_Date = rates?.End_Date,
+                        Page = page,
+                        PageSize = pageSize,
+                        TotalCount = rates != null ? rates.Rates.Count : 0,
+                        Rates = pagedRates != null ? pagedRates : null
+                    };
+                    return Ok(response);
+                }
+
+                error = new ErrorResponse
+                {
+                    ErrorMessage = data?.Data?.ToString()
                 };
-                return Ok(data);
+
+                return StatusCode((int)data.StatusCode, error);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                ErrorResponse error = new ErrorResponse()
+                error = new ErrorResponse
                 {
-                    ErrorMessage = ex.Message,
+                    ErrorMessage = "Internal Server Error"
                 };
-                return StatusCode(500, error);
+                return StatusCode((int)HttpStatusCode.InternalServerError, error);
             }
         }
     }

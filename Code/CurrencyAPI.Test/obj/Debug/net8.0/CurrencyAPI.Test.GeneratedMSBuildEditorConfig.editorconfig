@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CurrencyAPI.Test
-build_property.ProjectDir = C:\Users\osama.tariq\Source\Repos\OsamTariq\CurrencyExchangeRates\CurrencyAPI\CurrencyAPI.Test\
+build_property.ProjectDir = C:\Users\osama.tariq\Source\Repos\CurrencyExchangeRates\Code\CurrencyAPI.Test\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

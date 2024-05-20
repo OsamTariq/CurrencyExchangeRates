@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YPQnFXI4eRg9Qf/JCSAaLNQgR/EGZT7R9L72xk46qfEpDxM8TZUxhgZUZ2WI/nBFV3wDBaLtPGQ5ZfvrW8k/MQ==",
+  "dgSpecHash": "mUDuP0C9a1DulA8GbTdYqJBWIviMzmW7g78tTdz+z+EoKiW1npCJOfCrjnUYUk2SEh450tVJi/sYPjmibsb5yQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\osama.tariq\\Downloads\\CurrencyAPI (3)\\CurrencyAPI\\CurrencyAPI.Test\\CurrencyAPI.Test.csproj",
+  "projectFilePath": "C:\\Users\\osama.tariq\\Source\\Repos\\CurrencyExchangeRates\\Code\\CurrencyAPI.Test\\CurrencyAPI.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\osama.tariq\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\osama.tariq\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",

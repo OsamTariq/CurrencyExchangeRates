@@ -78,21 +78,80 @@ Caching is implemented using `IMemoryCache` to store the data and reduce the num
 
 ## Unit Tests
 
-The unit tests are implemented using NUnit and Moq.
+Unit tests are provided to ensure the functionality of the API. Below are the test cases, grouped by their respective functionalities:
 
-### CurrencyControllerTests
+### Currency Exchange Rates
 
-**Test Cases:**
-- `TestCurrencyExchangeRatesSuccess`: Ensures the `CurrencyExchangeRates` endpoint returns a 200 OK status.
-- `TestCurrencyExchangeRatesSuccessResponse`: Ensures the `CurrencyExchangeRates` endpoint returns the correct data.
-- `TestCurrencyExchangeRatesErrorResponse`: Ensures the `CurrencyExchangeRates` endpoint handles errors correctly.
-- `TestCurrencyConvertSuccess`: Ensures the `CurrencyConvert` endpoint returns a 200 OK status.
-- `TestCurrencyConvertSuccessResponse`: Ensures the `CurrencyConvert` endpoint returns the correct data.
-- `TestCurrencyConvertErrorResponse`: Ensures the `CurrencyConvert` endpoint handles currency exclusion errors correctly.
-- `TestCurrencyConvertThrowErrorResponse`: Ensures the `CurrencyConvert` endpoint handles conversion errors correctly.
-- `TestHistoricalRatesSuccess`: Ensures the `HistoricalRates` endpoint returns a 200 OK status.
-- `TestHistoricalRatesSuccessResponse`: Ensures the `HistoricalRates` endpoint returns the correct data.
-- `TestHistoricalRatesErrorResponse`: Ensures the `HistoricalRates` endpoint handles errors correctly.
+1. **TestCurrencyExchangeRatesSuccess**
+    - Verifies that the endpoint returns a 200 status code with correct data.
+    
+2. **TestCurrencyExchangeRatesSuccessResponse**
+    - Verifies that the endpoint returns a 200 status code and the response matches the expected data.
+    
+3. **TestCurrencyExchangeRatesErrorResponse**
+    - Verifies that the endpoint returns a 404 status code when the currency code is invalid.
+    
+4. **TestCurrencyExchangeRatesExceptionResponse**
+    - Verifies that the endpoint returns a 500 status code when an exception occurs.
+
+### Currency Conversion
+
+5. **TestCurrencyConvertSuccess**
+    - Verifies that the endpoint returns a 200 status code with correct conversion data.
+    
+6. **TestCurrencyConvertSuccessResponse**
+    - Verifies that the endpoint returns a 200 status code and the response matches the expected data.
+    
+7. **TestCurrencyConvertExcludedResponse**
+    - Verifies that the endpoint returns a 400 status code when the currency conversion is not allowed.
+    
+8. **TestCurrencyConvertErrorResponse**
+    - Verifies that the endpoint returns a 404 status code when the currency conversion is not found.
+    
+9. **TestCurrencyConvertErrorExceptionResponse**
+    - Verifies that the endpoint returns a 500 status code when an exception occurs.
+
+### Historical Rates
+
+10. **TestHistoricalRatesSuccess**
+    - Verifies that the endpoint returns a 200 status code with correct historical rates data.
+    
+11. **TestHistoricalRatesSuccessResponse**
+    - Verifies that the endpoint returns a 200 status code and the response matches the expected data.
+    
+12. **TestHistoricalRatesErrorResponse**
+    - Verifies that the endpoint returns a 404 status code when historical rates are not found.
+    
+13. **TestHistoricalRatesExceptionResponse**
+    - Verifies that the endpoint returns a 500 status code when an exception occurs.
+
+
+### Running Tests in Visual Studio
+
+To run the tests manually using Visual Studio, follow these steps:
+
+1. **Open Solution**:
+    - Open the solution containing the unit tests in Visual Studio.
+
+2. **Build Solution**:
+    - Build the solution to ensure all dependencies are resolved and there are no compilation errors.
+    - Go to the menu and select `Build` > `Build Solution`.
+
+3. **Open Test Explorer**:
+    - Go to the menu and select `Test` > `Test Explorer` to open the Test Explorer window.
+
+4. **Run All Tests**:
+    - In the Test Explorer window, you will see a list of all available tests.
+    - Click on `Run All` to execute all tests.
+    - Alternatively, you can right-click on individual tests or test classes and select `Run` to execute specific tests.
+
+5. **View Test Results**:
+    - Once the tests are executed, the results will be displayed in the Test Explorer window.
+    - You can view details of passed, failed, and skipped tests.
+
+Ensure that you have all dependencies installed and your environment is properly configured.
+
+
 
 ## Postman Collection
 
@@ -106,6 +165,8 @@ A Postman collection is provided for testing the API endpoints.
 **Variables:**
 - `urlTest`: Base URL for the external API (`https://api.frankfurter.app`).
 - `url`: Base URL for the local API (`https://localhost:7034`).
+
+## Example Usage
 
 ## Example Usage
 

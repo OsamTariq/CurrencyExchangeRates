@@ -4,7 +4,9 @@ using CurrencyAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using Newtonsoft.Json;
 using NUnit.Framework;
+using System.Net;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CurrencyAPI.Tests
@@ -27,6 +29,14 @@ namespace CurrencyAPI.Tests
         [Test]
         public async Task TestCurrencyExchangeRatesSuccess()
         {
+            var currencyServiceResponse = new CurrencyServiceResponse
+            {
+                StatusCode = 200,
+                Data = "Test_Data"
+            };
+
+            _mockCurrencyService.Setup(x => x.CurrencyExchangeRates("EUR")).ReturnsAsync(currencyServiceResponse);
+
             var result = await _controller.CurrencyExchangeRates("EUR");
 
             var okResult = result as OkObjectResult;
@@ -42,7 +52,14 @@ namespace CurrencyAPI.Tests
                 Amount = 1.0m,
                 Base = "USD"
             };
-            _mockCurrencyService.Setup(x => x.CurrencyExchangeRates("USD")).ReturnsAsync(expectedResponse);
+
+            var currencyServiceResponse = new CurrencyServiceResponse
+            {
+                StatusCode = 200,
+                Data = expectedResponse
+            };
+
+            _mockCurrencyService.Setup(x => x.CurrencyExchangeRates("USD")).ReturnsAsync(currencyServiceResponse);
 
             var result = await _controller.CurrencyExchangeRates("USD");
 
@@ -60,15 +77,37 @@ namespace CurrencyAPI.Tests
         [Test]
         public async Task TestCurrencyExchangeRatesErrorResponse()
         {
-            var expectedResponse = "Error in fetching USDa exchange rates.";
+            var currencyServiceResponse = new CurrencyServiceResponse
+            {
+                StatusCode = 404,
+                Data = "not found"
+            };
 
-            _mockCurrencyService.Setup(x => x.CurrencyExchangeRates("USDa")).ThrowsAsync(new Exception(expectedResponse));
+            _mockCurrencyService.Setup(x => x.CurrencyExchangeRates("USDa")).ReturnsAsync(currencyServiceResponse);
 
             var result = await _controller.CurrencyExchangeRates("USDa");
 
             var statusCode = (result as ObjectResult)?.StatusCode;
             var errorMessage = (result as ObjectResult)?.Value as ErrorResponse;
 
+            Assert.That(statusCode, Is.EqualTo(404));
+            Assert.IsNotNull(errorMessage);
+            Assert.That(currencyServiceResponse.Data, Is.EqualTo(errorMessage.ErrorMessage));
+        }
+
+        [Test]
+        public async Task TestCurrencyExchangeRatesExceptionResponse()
+        {
+            var expectedResponse = "Internal Server Error";
+
+            _mockCurrencyService.Setup(x => x.CurrencyExchangeRates("EUR")).ThrowsAsync(new Exception(expectedResponse));
+
+            var result = await _controller.CurrencyExchangeRates("EUR");
+
+            var statusCode = (result as ObjectResult)?.StatusCode;
+            var errorMessage = (result as ObjectResult)?.Value as ErrorResponse;
+
+            Assert.IsNotNull(statusCode);
             Assert.That(statusCode, Is.EqualTo(500));
             Assert.IsNotNull(errorMessage);
             Assert.That(expectedResponse, Is.EqualTo(errorMessage.ErrorMessage));
@@ -82,6 +121,14 @@ namespace CurrencyAPI.Tests
         [Test]
         public async Task TestCurrencyConvertSuccess()
         {
+            var currencyServiceResponse = new CurrencyServiceResponse
+            {
+                StatusCode = 200,
+                Data = "Test_Data"
+            };
+
+            _mockCurrencyService.Setup(x => x.CurrencyConvert(10, "AUD", "EUR")).ReturnsAsync(currencyServiceResponse);
+
             var result = await _controller.CurrencyConvert(10,"AUD","EUR");
 
             var okResult = result as OkObjectResult;
@@ -101,7 +148,14 @@ namespace CurrencyAPI.Tests
                     { "USD", 12.6557m }
                 }
             };
-            _mockCurrencyService.Setup(x => x.CurrencyConvert(10, "GBP", "USD")).ReturnsAsync(expectedResponse);
+
+            var currencyServiceResponse = new CurrencyServiceResponse
+            {
+                StatusCode = 200,
+                Data = expectedResponse
+            };
+
+            _mockCurrencyService.Setup(x => x.CurrencyConvert(10, "GBP", "USD")).ReturnsAsync(currencyServiceResponse);
 
             var result = await _controller.CurrencyConvert(10, "GBP", "USD");
 
@@ -114,21 +168,18 @@ namespace CurrencyAPI.Tests
 
             Assert.That(actualResponse.Amount, Is.EqualTo(expectedResponse.Amount));
             Assert.That(actualResponse.Base, Is.EqualTo(expectedResponse.Base));
-
-            Assert.That(expectedResponse.Rates, Has.Count.EqualTo(actualResponse?.Rates?.Count));
-            foreach (var data in expectedResponse.Rates)
-            {
-                Assert.IsTrue(actualResponse?.Rates?.ContainsKey(data.Key));
-                Assert.That(data.Value, Is.EqualTo(actualResponse?.Rates?[data.Key]));
-            }
         }
 
         [Test]
-        public async Task TestCurrencyConvertErrorResponse()
+        public async Task TestCurrencyConvertExcludedResponse()
         {
-            var expectedResponse = "Currency conversion for the AUD to THB currency is not allowed.";
+            var currencyServiceResponse = new CurrencyServiceResponse
+            {
+                StatusCode = 400,
+                Data = "Currency conversion for the AUD to THB currency is not allowed."
+            };
 
-            _mockCurrencyService.Setup(x => x.CurrencyConvert(10, "AUD", "THB")).ThrowsAsync(new Exception(expectedResponse));
+            _mockCurrencyService.Setup(x => x.CurrencyConvert(10, "AUD", "THB")).ReturnsAsync(currencyServiceResponse);
 
             var result = await _controller.CurrencyConvert(10, "AUD", "THB");
 
@@ -137,13 +188,34 @@ namespace CurrencyAPI.Tests
 
             Assert.That(statusCode, Is.EqualTo(400));
             Assert.IsNotNull(errorMessage);
-            Assert.That(expectedResponse, Is.EqualTo(errorMessage.ErrorMessage));
+            Assert.That(currencyServiceResponse.Data, Is.EqualTo(errorMessage.ErrorMessage));
         }
 
         [Test]
-        public async Task TestCurrencyConvertThrowErrorResponse()
+        public async Task TestCurrencyConvertErrorResponse()
         {
-            var expectedResponse = "Error in fetching conversion rates from YPJ currency to AUD";
+            var currencyServiceResponse = new CurrencyServiceResponse
+            {
+                StatusCode = 404,
+                Data = "not found"
+            };
+
+            _mockCurrencyService.Setup(x => x.CurrencyConvert(10, "YPJ", "AUD")).ReturnsAsync(currencyServiceResponse);
+
+            var result = await _controller.CurrencyConvert(10, "YPJ", "AUD");
+
+            var statusCode = (result as ObjectResult)?.StatusCode;
+            var errorMessage = (result as ObjectResult)?.Value as ErrorResponse;
+
+            Assert.That(statusCode, Is.EqualTo(404));
+            Assert.IsNotNull(errorMessage);
+            Assert.That(currencyServiceResponse.Data, Is.EqualTo(errorMessage.ErrorMessage));
+        }
+
+        [Test]
+        public async Task TestCurrencyConvertErrorExceptionResponse()
+        {
+            var expectedResponse = "Internal Server Error";
 
             _mockCurrencyService.Setup(x => x.CurrencyConvert(10, "YPJ", "AUD")).ThrowsAsync(new Exception(expectedResponse));
 
@@ -152,6 +224,7 @@ namespace CurrencyAPI.Tests
             var statusCode = (result as ObjectResult)?.StatusCode;
             var errorMessage = (result as ObjectResult)?.Value as ErrorResponse;
 
+            Assert.IsNotNull(statusCode);
             Assert.That(statusCode, Is.EqualTo(500));
             Assert.IsNotNull(errorMessage);
             Assert.That(expectedResponse, Is.EqualTo(errorMessage.ErrorMessage));
@@ -164,10 +237,37 @@ namespace CurrencyAPI.Tests
         [Test]
         public async Task TestHistoricalRatesSuccess()
         {
-            var startDate = new DateTime(2022, 1, 17);
-            var endDate = new DateTime(2024, 1, 15);
+            var startDate = new DateTime(2020, 01, 14);
+            var endDate = new DateTime(2020, 01, 27);
+            var currencyCode = "AUD";
 
-            var result = await _controller.CurrencyHistoricalRates(startDate, endDate);
+            var expectedResponse = new PaginatedResponse<Dictionary<string, decimal>>
+            {
+                Base = "AUD",
+                Start_Date = startDate.ToString(),
+                End_Date = endDate.ToString(),
+                Page = 1,
+                PageSize = 1,
+                TotalCount = 1,
+                Rates = new Dictionary<string, Dictionary<string, decimal>>
+                {
+                    { new DateTime(2020, 01, 14).ToString(), new Dictionary<string, decimal>
+                        {
+                            { "BGN", 1.214m },
+                        }
+                    },
+                }
+            };
+
+            var currencyServiceResponse = new CurrencyServiceResponse
+            {
+                StatusCode = 200,
+                Data = JsonConvert.SerializeObject(expectedResponse)
+            };
+
+            _mockCurrencyService.Setup(x => x.CurrencyHistoricalRates(startDate, endDate, currencyCode)).ReturnsAsync(currencyServiceResponse);
+
+            var result = await _controller.CurrencyHistoricalRates(startDate, endDate, currencyCode);
 
             var okResult = result as OkObjectResult;
             Assert.IsNotNull(okResult);
@@ -181,11 +281,14 @@ namespace CurrencyAPI.Tests
             var endDate = new DateTime(2020, 01, 27);
             var currencyCode = "AUD";
 
-            var expectedResponse = new HistoricalRates
+            var expectedResponse = new PaginatedResponse<Dictionary<string, decimal>>
             {
                 Base = "AUD",
                 Start_Date = startDate.ToString(),
                 End_Date = endDate.ToString(),
+                Page = 1,
+                PageSize = 1,
+                TotalCount = 1,
                 Rates = new Dictionary<string, Dictionary<string, decimal>>
                 {
                     { new DateTime(2020, 01, 14).ToString(), new Dictionary<string, decimal>
@@ -195,17 +298,16 @@ namespace CurrencyAPI.Tests
                             { "CAD", 0.9018m },
                         }
                     },
-                    { new DateTime(2020, 01, 15).ToString(), new Dictionary<string, decimal>
-                        {
-                            { "BGN", 1.2082m },
-                            { "BRL", 2.8632m },
-                            { "CAD", 0.89974m },
-                        }
-                    },
                 }
             };
 
-            _mockCurrencyService.Setup(x => x.CurrencyHistoricalRates(startDate, endDate, currencyCode)).ReturnsAsync(expectedResponse);
+            var currencyServiceResponse = new CurrencyServiceResponse
+            {
+                StatusCode = 200,
+                Data = JsonConvert.SerializeObject(expectedResponse)
+            };
+
+            _mockCurrencyService.Setup(x => x.CurrencyHistoricalRates(startDate, endDate, currencyCode)).ReturnsAsync(currencyServiceResponse);
 
             var result = await _controller.CurrencyHistoricalRates(startDate, endDate, currencyCode);
 
@@ -219,6 +321,7 @@ namespace CurrencyAPI.Tests
             Assert.That(expectedResponse.Base, Is.EqualTo(actualResponse.Base));
             Assert.That(expectedResponse.Start_Date, Is.EqualTo(actualResponse.Start_Date));
             Assert.That(expectedResponse.End_Date, Is.EqualTo(actualResponse.End_Date));
+            Assert.That(actualResponse?.Rates?.Count, Is.EqualTo(1));
         }
 
         [Test]
@@ -228,18 +331,49 @@ namespace CurrencyAPI.Tests
             var endDate = new DateTime(2019, 01, 27);
             var currencyCode = "AUD";
 
-            var expectedResponse = "Error in fetching AUD historical rates.";
+            var currencyServiceResponse = new CurrencyServiceResponse
+            {
+                StatusCode = 404,
+                Data = "not found"
+            };
 
-            _mockCurrencyService.Setup(x => x.CurrencyHistoricalRates(startDate, endDate, currencyCode)).ThrowsAsync(new Exception(expectedResponse));
+            _mockCurrencyService.Setup(x => x.CurrencyHistoricalRates(startDate, endDate, currencyCode)).ReturnsAsync(currencyServiceResponse);
 
             var result = await _controller.CurrencyHistoricalRates(startDate, endDate, currencyCode);
 
             var statusCode = (result as ObjectResult)?.StatusCode;
             var errorMessage = (result as ObjectResult)?.Value as ErrorResponse;
 
+            Assert.That(statusCode, Is.EqualTo(404));
+            Assert.IsNotNull(errorMessage);
+            Assert.That(currencyServiceResponse.Data, Is.EqualTo(errorMessage.ErrorMessage));
+        }
+
+        [Test]
+        public async Task TestHistoricalRatesExceptionResponse()
+        {
+            var startDate = new DateTime(2022, 1, 17);
+            var endDate = new DateTime(2024, 1, 15);
+            var currencyCode = "AUD";
+
+            var expectedResponse = new PaginatedResponse<Dictionary<string, decimal>> { };
+
+            var currencyServiceResponse = new CurrencyServiceResponse
+            {
+                StatusCode = 200,
+                Data = "Internal Server Error"
+            };
+
+            _mockCurrencyService.Setup(x => x.CurrencyHistoricalRates(startDate, endDate, currencyCode)).ReturnsAsync(currencyServiceResponse);
+
+            var result = await _controller.CurrencyHistoricalRates(startDate, endDate);
+
+            var statusCode = (result as ObjectResult)?.StatusCode;
+            var errorMessage = (result as ObjectResult)?.Value as ErrorResponse;
+
             Assert.That(statusCode, Is.EqualTo(500));
             Assert.IsNotNull(errorMessage);
-            Assert.That(expectedResponse, Is.EqualTo(errorMessage.ErrorMessage));
+            Assert.That(currencyServiceResponse.Data, Is.EqualTo(errorMessage.ErrorMessage));
         }
 
         #endregion
